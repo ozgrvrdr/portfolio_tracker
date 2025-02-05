@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portföy Takibi Uygulaması - Kayıt Ol</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #f7f9fc;
+        }
+        .wrapper {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        /* Sol Sütun */
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .form-section h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .form-section label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .form-section input {
+            width: 100%;
+            height: 45px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-section input:focus {
+            border-color: #6abf69;
+            outline: none;
+        }
+        .form-section button {
+            width: 100%;
+            height: 45px;
+            background-color: #6abf69;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-section button:hover {
+            background-color: #5aa85a;
+        }
+        .form-section .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .form-section .footer a {
+            color: #6abf69;
+            text-decoration: none;
+        }
+        .form-section .footer a:hover {
+            text-decoration: underline;
+        }
+        /* Sağ Sütun */
+        .right-section {
+            flex: 1;
+            background-color: #9164cc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            flex-direction: column;
+            padding: 40px;
+        }
+        .right-section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .right-section p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-section">
+            <h1>Portföy Takibi Uygulaması</h1>
+            <form>
+                <label for="ad-soyad">Ad Soyad:</label>
+                <input id="ad-soyad" type="text" placeholder="Adınızı ve soyadınızı girin" required>
+                
+                <label for="kullanici-adi">Kullanıcı Adı:</label>
+                <input id="kullanici-adi" type="text" placeholder="Kullanıcı adınızı girin" required>
+                
+                <label for="email">E-posta:</label>
+                <input id="email" type="email" placeholder="E-posta adresinizi girin" required>
+                
+                <label for="password">Parola:</label>
+                <input id="password" type="password" placeholder="Parolanızı girin" required>
+                
+                <label for="password-confirm">Parolayı Onayla:</label>
+                <input id="password-confirm" type="password" placeholder="Parolanızı tekrar girin" required>
+                
+                <button type="submit">Kayıt Ol</button>
+            </form>
+            <div class="footer">
+                <p>Zaten bir hesabın var mı? <a href="#">Giriş Yap</a></p>
+            </div>
+        </div>
+        <div class="right-section">
+            <h2>Hemen Başlayın!</h2>
+            <p>Portföyünüzü takip ederek yatırımlarınızı optimize edin.</p>
+        </div>
+    </div>
+</body>
+</html>

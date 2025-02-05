@@ -1,0 +1,24 @@
+# Sanal Ortam Klasörleri  
+venv/  
+env/  
+.env  
+
+# Python Önbellek Dosyaları  
+__pycache__/  
+*.pyc  
+*.pyo  
+*.pyd  
+
+# Veritabanı Dosyaları  
+*.db  
+
+# IDE Klasörleri  
+.vscode/  
+.idea/  
+
+# İşletim Sistemi Dosyaları  
+.DS_Store  
+Thumbs.db  
+
+# Günlük Dosyaları  
+*.log
