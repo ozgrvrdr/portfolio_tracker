@@ -7,4 +7,9 @@ bp = Blueprint('main', __name__)
 def index():  
     if current_user.is_authenticated:  
         return render_template('main/dashboard.html')  
-    return render_template('main/welcome.html')
+    return render_template('main/welcome.html')  
+
+@bp.route('/dashboard')  
+@login_required  
+def dashboard():  
+    return render_template('main/dashboard.html')  # Parantez kapatıldı
