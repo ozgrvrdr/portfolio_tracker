@@ -2,23 +2,47 @@
 venv/  
 env/  
 .env  
+.venv/  
 
 # Python Önbellek Dosyaları  
 __pycache__/  
 *.pyc  
 *.pyo  
 *.pyd  
+*.pyw  
+.Python  
 
 # Veritabanı Dosyaları  
 *.db  
+*.sqlite  
+*.sqlite3  
 
 # IDE Klasörleri  
 .vscode/  
 .idea/  
+*.swp  
+*.swo  
+*~  
 
 # İşletim Sistemi Dosyaları  
 .DS_Store  
 Thumbs.db  
+desktop.ini  
 
 # Günlük Dosyaları  
-*.log
+*.log  
+logs/  
+
+# Dağıtım ve Kurulum Dosyaları  
+dist/  
+build/  
+*.egg-info/  
+*.egg  
+
+# Paket Yönetimi  
+pip-log.txt  
+pip-delete-this-directory.txt  
+
+# Proje Özel Dosyalar  
+*.bak  
+*.tmp

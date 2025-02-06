@@ -1,0 +1,43 @@
+{% extends "base.html" %}  
+
+{% block content %}  
+<div class="container">  
+    <h1>{{ portfolyo.name }} Portföyü Detayları</h1>  
+    
+    <div class="portfolyo-info">  
+        <h2>Varlıklar</h2>  
+        {% if assets %}  
+            <table class="table">  
+                <thead>  
+                    <tr>  
+                        <th>Varlık Adı</th>  
+                        <th>Miktar</th>  
+                        <th>Fiyat</th>  
+                        <th>İşlemler</th>  
+                    </tr>  
+                </thead>  
+                <tbody>  
+                    {% for asset in assets %}  
+                        <tr>  
+                            <td>{{ asset.name }}</td>  
+                            <td>{{ asset.quantity }}</td>  
+                            <td>{{ asset.price }}</td>  
+                            <td>  
+                                <a href="#" class="btn btn-sm btn-warning">Düzenle</a>  
+                                <a href="#" class="btn btn-sm btn-danger">Sil</a>  
+                            </td>  
+                        </tr>  
+                    {% endfor %}  
+                </tbody>  
+            </table>  
+        {% else %}  
+            <p>Bu portföyde henüz varlık bulunmuyor.</p>  
+        {% endif %}  
+    </div>  
+
+    <div class="actions">  
+        <a href="{{ url_for('portfolyo.dashboard') }}" class="btn btn-secondary">Geri Dön</a>  
+        <a href="{{ url_for('portfolyo.add_asset', portfolyo_id=portfolyo.id) }}" class="btn btn-primary">Varlık Ekle</a>  
+    </div>  
+</div>  
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}  
+
+{% block content %}  
+<div class="container">  
+    <h1>Portföylerim</h1>  
+    
+    {% if portfolyolar %}  
+        <div class="portfolyo-list">  
+            {% for portfolyo in portfolyolar %}  
+                <div class="portfolyo-card">  
+                    <h2>{{ portfolyo.name }}</h2>  
+                    <a href="{{ url_for('portfolyo.portfolyo_details', portfolyo_id=portfolyo.id) }}"   
+                       class="btn btn-primary">Detayları Görüntüle</a>  
+                </div>  
+            {% endfor %}  
+        </div>  
+    {% else %}  
+        <p>Henüz bir portföyünüz bulunmuyor.</p>  
+    {% endif %}  
+
+    <a href="{{ url_for('portfolyo.create_portfolyo') }}" class="btn btn-success">Yeni Portföy Oluştur</a>  
+</div>  
+{% endblock %}   

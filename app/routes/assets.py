@@ -1,22 +1,22 @@
 from flask import Blueprint, render_template, redirect, url_for, flash, request  
 from flask_login import login_required, current_user  
 from app import db  
-from app.models import Portfolio, Asset  
+from app.models import Portfolyo, Asset  # Portfolio -> Portfolyo  
 from datetime import datetime  
 
 # Blueprint oluşturma  
 bp = Blueprint('assets', __name__)  
 
-@bp.route('/add_asset/<int:portfolio_id>', methods=['GET', 'POST'])  
+@bp.route('/add_asset/<int:portfolyo_id>', methods=['GET', 'POST'])  # portfolio_id -> portfolyo_id  
 @login_required  
-def add_asset(portfolio_id):  
+def add_asset(portfolyo_id):  # portfolio_id -> portfolyo_id  
     # Portföyü kontrol et  
-    portfolio = Portfolio.query.get_or_404(portfolio_id)  
+    portfolyo = Portfolyo.query.get_or_404(portfolyo_id)  # Portfolio -> Portfolyo  
     
     # Kullanıcının kendi portföyü mü kontrol et  
-    if portfolio.user_id != current_user.id:  
+    if portfolyo.user_id != current_user.id:  
         flash('Bu portföye varlık ekleme izniniz yok.', 'danger')  
-        return redirect(url_for('portfolio.dashboard'))  
+        return redirect(url_for('portfolyo.dashboard'))  # portfolio -> portfolyo  
     
     if request.method == 'POST':  
         name = request.form.get('name')  
@@ -27,7 +27,7 @@ def add_asset(portfolio_id):
         
         # Yeni varlık oluştur  
         new_asset = Asset(  
-            portfolio_id=portfolio_id,  
+            portfolyo_id=portfolyo_id,  # portfolio_id -> portfolyo_id  
             name=name,  
             type=asset_type,  
             quantity=quantity,  
@@ -39,24 +39,24 @@ def add_asset(portfolio_id):
             db.session.add(new_asset)  
             db.session.commit()  
             flash('Varlık başarıyla eklendi!', 'success')  
-            return redirect(url_for('portfolio.portfolio_details', portfolio_id=portfolio_id))  
+            return redirect(url_for('portfolyo.portfolyo_details', portfolyo_id=portfolyo_id))  # portfolio -> portfolyo  
         except Exception as e:  
             db.session.rollback()  
             flash('Varlık eklenirken bir hata oluştu.', 'danger')  
     
-    return render_template('assets/add_asset.html', portfolio=portfolio)  
-
+    return render_template('portfolyo/add_asset.html', portfolyo=portfolyo)  # portfolio -> portfolyo  
+    
 @bp.route('/edit_asset/<int:asset_id>', methods=['GET', 'POST'])  
 @login_required  
 def edit_asset(asset_id):  
     # Varlığı ve bağlı olduğu portföyü getir  
     asset = Asset.query.get_or_404(asset_id)  
-    portfolio = asset.portfolio  
+    portfolyo = asset.portfolyo  # portfolio -> portfolyo  
     
     # Kullanıcının kendi portföyü mü kontrol et  
-    if portfolio.user_id != current_user.id:  
+    if portfolyo.user_id != current_user.id:  
         flash('Bu varlığı düzenleme izniniz yok.', 'danger')  
-        return redirect(url_for('portfolio.dashboard'))  
+        return redirect(url_for('portfolyo.dashboard'))  # portfolio -> portfolyo  
     
     if request.method == 'POST':  
         # Güncelleme bilgileri  
@@ -77,24 +77,24 @@ def edit_asset(asset_id):
         try:  
             db.session.commit()  
             flash('Varlık başarıyla güncellendi!', 'success')  
-            return redirect(url_for('portfolio.portfolio_details', portfolio_id=portfolio.id))  
+            return redirect(url_for('portfolyo.portfolyo_details', portfolyo_id=portfolyo.id))  # portfolio -> portfolyo  
         except Exception as e:  
             db.session.rollback()  
             flash('Varlık güncellenirken bir hata oluştu.', 'danger')  
     
-    return render_template('assets/edit_asset.html', asset=asset, portfolio=portfolio)  
-
+    return render_template('portfolyo/edit_asset.html', asset=asset, portfolyo=portfolyo)  # portfolio -> portfolyo  
+    
 @bp.route('/delete_asset/<int:asset_id>', methods=['POST'])  
 @login_required  
 def delete_asset(asset_id):  
     # Varlığı ve bağlı olduğu portföyü getir  
     asset = Asset.query.get_or_404(asset_id)  
-    portfolio = asset.portfolio  
+    portfolyo = asset.portfolyo  # portfolio -> portfolyo  
     
     # Kullanıcının kendi portföyü mü kontrol et  
-    if portfolio.user_id != current_user.id:  
+    if portfolyo.user_id != current_user.id:  
         flash('Bu varlığı silme izniniz yok.', 'danger')  
-        return redirect(url_for('portfolio.dashboard'))  
+        return redirect(url_for('portfolyo.dashboard'))  # portfolio -> portfolyo  
     
     try:  
         db.session.delete(asset)  
@@ -104,4 +104,4 @@ def delete_asset(asset_id):
         db.session.rollback()  
         flash('Varlık silinirken bir hata oluştu.', 'danger')  
     
-    return redirect(url_for('portfolio.portfolio_details', portfolio_id=portfolio.id))
+    return redirect(url_for('portfolyo.portfolyo_details', portfolyo_id=portfolyo.id))  # portfolio -> portfolyo

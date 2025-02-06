@@ -1,0 +1,40 @@
+{% extends "base.html" %}  
+
+{% block content %}  
+<div class="container">  
+    <h1>Varlık Ekle</h1>  
+    
+    <form method="POST" action="{{ url_for('portfolyo.add_asset', portfolyo_id=portfolyo.id) }}">  
+        <div class="form-group">  
+            <label for="asset_name">Varlık Adı</label>  
+            <input type="text"   
+                   class="form-control"   
+                   id="asset_name"   
+                   name="asset_name"   
+                   required>  
+        </div>  
+        
+        <div class="form-group">  
+            <label for="quantity">Miktar</label>  
+            <input type="number"   
+                   step="0.00001"   
+                   class="form-control"   
+                   id="quantity"   
+                   name="quantity"   
+                   required>  
+        </div>  
+        
+        <div class="form-group">  
+            <label for="price">Birim Fiyat</label>  
+            <input type="number"   
+                   step="0.01"   
+                   class="form-control"   
+                   id="price"   
+                   name="price"   
+                   required>  
+        </div>  
+        
+        <button type="submit" class="btn btn-primary">Varlık Ekle</button>  
+    </form>  
+</div>  
+{% endblock %} 

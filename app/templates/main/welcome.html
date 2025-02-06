@@ -1,0 +1,31 @@
+{% extends "base.html" %}  
+
+{% block content %}  
+<div class="container text-center mt-5">  
+    <h1 class="mb-4">Portfolio Takip Uygulamasına Hoş Geldiniz</h1>  
+    
+    <div class="row justify-content-center">  
+        <div class="col-md-6">  
+            <p class="lead mb-4">Yatırımlarınızı kolayca takip edin ve yönetin</p>  
+            
+            <div class="d-flex justify-content-center">  
+                <a href="{{ url_for('auth.login') }}" class="btn btn-primary mr-3">  
+                    <i class="fas fa-sign-in-alt mr-2"></i>Giriş Yap  
+                </a>  
+                <a href="{{ url_for('auth.register') }}" class="btn btn-secondary">  
+                    <i class="fas fa-user-plus mr-2"></i>Kayıt Ol  
+                </a>  
+            </div>  
+            
+            <div class="mt-4">  
+                <h3>Neler Yapabilirsiniz?</h3>  
+                <ul class="list-unstyled">  
+                    <li>📊 Portföylerinizi Oluşturun</li>  
+                    <li>💰 Varlıklarınızı Takip Edin</li>  
+                    <li>📈 Yatırım Performansınızı İzleyin</li>  
+                </ul>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+{% endblock %}

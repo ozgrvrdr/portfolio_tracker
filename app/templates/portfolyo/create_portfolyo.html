@@ -1,0 +1,19 @@
+{% extends "base.html" %}  
+
+{% block content %}  
+<div class="container">  
+    <h1>Yeni Portföy Oluştur</h1>  
+    
+    <form method="POST" action="{{ url_for('portfolyo.create_portfolyo') }}">  
+        <div class="form-group">  
+            <label for="portfolyo_name">Portföy Adı</label>  
+            <input type="text"   
+                   class="form-control"   
+                   id="portfolyo_name"   
+                   name="portfolyo_name"   
+                   required>  
+        </div>  
+        <button type="submit" class="btn btn-primary">Oluştur</button>  
+    </form>  
+</div>  
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}  
+
+{% block content %}  
+<div class="container mt-4">  
+    <div class="row">  
+        <div class="col-md-12">  
+            <h1 class="mb-4">Hoş Geldiniz, {{ current_user.username }}!</h1>  
+            
+            <div class="row">  
+                <div class="col-md-6">  
+                    <div class="card">  
+                        <div class="card-header">  
+                            <h3>Portföyleriniz</h3>  
+                        </div>  
+                        <div class="card-body">  
+                            {% if current_user.portfolyolar %}  
+                                <ul class="list-group">  
+                                {% for portfolyo in current_user.portfolyolar %}  
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">  
+                                        <a href="{{ url_for('portfolyo.portfolyo_details', portfolyo_id=portfolyo.id) }}">  
+                                            {{ portfolyo.name }}  
+                                        </a>  
+                                        <span class="badge bg-primary rounded-pill">  
+                                            {{ portfolyo.assets|length }} Varlık  
+                                        </span>  
+                                    </li>  
+                                {% endfor %}  
+                                </ul>  
+                            {% else %}  
+                                <p class="text-muted">Henüz bir portföyünüz yok.</p>  
+                            {% endif %}  
+                        </div>  
+                        <div class="card-footer">  
+                            <a href="{{ url_for('portfolyo.create_portfolyo') }}" class="btn btn-success btn-sm">  
+                                <i class="fas fa-plus mr-2"></i>Yeni Portföy Oluştur  
+                            </a>  
+                        </div>  
+                    </div>  
+                </div>  
+                
+                <div class="col-md-6">  
+                    <div class="card">  
+                        <div class="card-header">  
+                            <h3>Hızlı İşlemler</h3>  
+                        </div>  
+                        <div class="card-body">  
+                            <div class="list-group">  
+                                <a href="{{ url_for('portfolyo.create_portfolyo') }}" class="list-group-item list-group-item-action">  
+                                    <i class="fas fa-folder-plus mr-2"></i>Portföy Oluştur  
+                                </a>  
+                                {% if current_user.portfolyolar %}  
+                                <a href="{{ url_for('assets.add_asset', portfolio_id=current_user.portfolyolar[0].id) }}" class="list-group-item list-group-item-action">  
+                                    <i class="fas fa-coins mr-2"></i>Varlık Ekle  
+                                </a>  
+                                {% endif %}  
+                            </div>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+{% endblock %}
