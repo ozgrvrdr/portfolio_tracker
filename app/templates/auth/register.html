@@ -46,8 +46,12 @@
                     {% endfor %}  
                 {% endif %}  
                 
+<<<<<<< HEAD
                 <!-- Buton stilini düzenledik -->  
                 <button type="submit" class="btn btn-success w-100">Kayıt Ol</button>  
+=======
+                {{ form.submit(value="Kayıt Ol", class="btn btn-primary w-100", style="background-color: #6abf69; color: white;") }}  
+>>>>>>> e1a2d9cc446d04935eb44e5fd5a100845c8bbdf8
             </form>  
             <div class="footer">  
                 <p>Zaten bir hesabın var mı? <a href="{{ url_for('auth.login') }}">Giriş Yap</a></p>  
