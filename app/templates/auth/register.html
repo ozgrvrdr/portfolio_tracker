@@ -4,112 +4,8 @@
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Portföy Takibi Uygulaması - Kayıt Ol</title>  
-    <style>  
-        body {  
-            font-family: 'Arial', sans-serif;  
-            margin: 0;  
-            display: flex;  
-            min-height: 100vh;  
-            justify-content: center;  
-            align-items: center;  
-            background-color: #f7f9fc;  
-        }  
-        .wrapper {  
-            display: flex;  
-            width: 80%;  
-            max-width: 1200px;  
-            background-color: #fff;  
-            border-radius: 15px;  
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  
-            overflow: hidden;  
-        }  
-        /* Sol Sütun */  
-        .form-section {  
-            flex: 1;  
-            padding: 40px;  
-            display: flex;  
-            flex-direction: column;  
-            justify-content: center;  
-        }  
-        .form-section h1 {  
-            font-size: 28px;  
-            color: #333;  
-            margin-bottom: 20px;  
-        }  
-        .form-section label {  
-            font-size: 14px;  
-            color: #666;  
-            margin-bottom: 5px;  
-            display: block;  
-        }  
-        .form-section input {  
-            width: 100%;  
-            height: 45px;  
-            margin-bottom: 20px;  
-            padding: 10px;  
-            border: 1px solid #ced4da;  
-            border-radius: 8px;  
-            font-size: 14px;  
-            transition: border-color 0.3s;  
-        }  
-        .form-section input:focus {  
-            border-color: #6abf69;  
-            outline: none;  
-        }  
-        .form-section button {  
-            width: 100%;  
-            height: 45px;  
-            background-color: #6abf69;  
-            color: white;  
-            border: none;  
-            border-radius: 8px;  
-            font-size: 16px;  
-            cursor: pointer;  
-            transition: background-color 0.3s;  
-        }  
-        .form-section button:hover {  
-            background-color: #5aa85a;  
-        }  
-        .form-section .footer {  
-            margin-top: 20px;  
-            font-size: 14px;  
-            text-align: center;  
-        }  
-        .form-section .footer a {  
-            color: #6abf69;  
-            text-decoration: none;  
-        }  
-        .form-section .footer a:hover {  
-            text-decoration: underline;  
-        }  
-        /* Sağ Sütun */  
-        .right-section {  
-            flex: 1;  
-            background-color: #9164cc;  
-            display: flex;  
-            justify-content: center;  
-            align-items: center;  
-            color: #fff;  
-            text-align: center;  
-            flex-direction: column;  
-            padding: 40px;  
-        }  
-        .right-section h2 {  
-            font-size: 24px;  
-            margin-bottom: 10px;  
-        }  
-        .right-section p {  
-            font-size: 16px;  
-            line-height: 1.5;  
-        }  
-        /* Hata mesajları için stil */  
-        .error-message {  
-            color: red;  
-            font-size: 12px;  
-            margin-top: -15px;  
-            margin-bottom: 10px;  
-        }  
-    </style>  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  
 </head>  
 <body>  
     <div class="wrapper">  
@@ -150,7 +46,8 @@
                     {% endfor %}  
                 {% endif %}  
                 
-                {{ form.submit(value="Kayıt Ol") }}  
+                <!-- Buton stilini düzenledik -->  
+                <button type="submit" class="btn btn-success w-100">Kayıt Ol</button>  
             </form>  
             <div class="footer">  
                 <p>Zaten bir hesabın var mı? <a href="{{ url_for('auth.login') }}">Giriş Yap</a></p>  
